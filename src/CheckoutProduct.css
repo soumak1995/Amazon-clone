@@ -1,0 +1,43 @@
+.checkoutProduct{
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.checkoutProduct__info{
+     padding-left: 20px;
+}
+.checkoutProduct__info > button{
+    background:#f0c14b;
+    border:1px solid;
+    margin-top:10px;
+    border-color: #a88734 #9c7e31 #846a29;
+    color:#111
+}
+.checkoutProduct__buttonResize{
+    color: rgba(0, 0, 0, 0.87);
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    min-width: 64px;
+    box-sizing: border-box;
+    transition:  250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.75;
+    border-radius: 4px;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+}
+
+.checkoutProduct__image{
+    object-fit: contain;
+    width:180px;
+    height: 180px;
+}
+.checkoutProduct__rating{
+    display:flex;
+    font-family:"BlinkMacSystemFont","Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+}
+.checkoutProduct__title{
+    font-size:17px;
+    font-weight: 800
+}
