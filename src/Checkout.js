@@ -1,11 +1,30 @@
-import React,{useEffect} from 'react'
+import React,{useEffect,useState} from 'react'
 import './Checkout.css'
 import Subtotal from './Subtotal.js'
 import {useStateValue} from './StateProvider.js'
 import CheckoutProduct from './CheckoutProduct.js'
 import './CheckoutProduct.css'
+import {toast} from 'react-toastify'
+
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure();
 function Checkout() {
+    const[loginStatus,setLoginStatus]=useState(true)
+    const notify=()=>{
+        toast.warn('Please log in before procced to checkout!!',{
+            position:toast.POSITION.TOP_CENTER,
+            autoClose:false
+        });
+        
+    }
     const[{basket,user},dispatch]=useStateValue();
+    useEffect(()=>{
+        if(user===null){
+            notify()
+        }else{
+            setLoginStatus(false);
+        }
+   },[user])
     return (
         <div className='checkout'>
             <div className="checkout__left">
@@ -34,7 +53,7 @@ function Checkout() {
             </div>
             </div>
             <div className="checkout__right">
-              <Subtotal/>
+              <Subtotal loginStatus={loginStatus}/>
             </div>
 
         </div>

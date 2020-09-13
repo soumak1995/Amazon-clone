@@ -26,6 +26,7 @@
     border-radius: 4px;
     letter-spacing: 0.02857em;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 .checkoutProduct__image{
@@ -39,5 +40,5 @@
 }
 .checkoutProduct__title{
     font-size:17px;
-    font-weight: 800
+    font-weight: 400
 }

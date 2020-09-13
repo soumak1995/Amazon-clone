@@ -4,10 +4,11 @@ import CurrencyFormat from "react-currency-format"
 import {useStateValue} from './StateProvider.js'
 import {getBasketTotal} from './Reducer.js'
 import {useHistory} from 'react-router-dom'
-function Subtotal() {
+function Subtotal({loginStatus}) {
+  console.log(loginStatus)
   const history=useHistory();
-  const [{basket},dispatch]=useStateValue();
-    
+  const [{basket,user},dispatch]=useStateValue();
+   
     return (
         <div 
           className="subtotal">
@@ -15,7 +16,7 @@ function Subtotal() {
         value={getBasketTotal(basket)}
         displayType={"text"}
         thousandSeparator={true}
-        prefix={"$"}
+        prefix={"₹"}
         renderText={(value) => (
           <>
             <p>
@@ -28,7 +29,7 @@ function Subtotal() {
         )}
         decimalScale={2}
       />
-            <button onClick={e=>history.push('/payment')}>Proceed to Checkout</button>
+            <button disabled={loginStatus} onClick={e=>history.push('/payment')}>Proceed to Checkout</button>
         </div>
     )
 }

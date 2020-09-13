@@ -1,8 +1,15 @@
 import React from 'react'
 import './Product.css'
 import {useStateValue} from './StateProvider'
+import {toast} from 'react-toastify'
+
+import 'react-toastify/dist/ReactToastify.css'
+toast.configure();
 const Product=({id,title,image,price,rating})=>{
     const [state,dispatch]=useStateValue();
+    const notify=()=>{
+       toast.info('You added this product in your basket!🤩');
+    }
     const addToBasket=()=>{
       dispatch({
           type:'ADD_TO_BASKET',
@@ -13,20 +20,21 @@ const Product=({id,title,image,price,rating})=>{
               price:price,
               rating:rating
           }
-      })
+      });
+      notify()
     }
-    return(
+    return(   
         <div
         className="product">
          <div className="product__info">
          <p className="product__title">{title}</p>
          <p className="product_price">
-         <small>$</small>
+         <small>₹</small>
          <strong>{price}</strong>
          </p>
          <div className="product__rating">
          {Array(rating).fill().map((_,i)=>(
-            <p>✡️</p>
+            <p>⭐</p>
          ))}
          
          </div>
