@@ -4,7 +4,7 @@ import {toast} from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
 toast.configure();
-function CheckoutProduct({id,image,title,price,rating,hideButton}) {
+function CheckoutProduct({id,image,title,price,rating,hideButton,count}) {
     const[{busket,user},dispatch]=useStateValue();
     const notify=()=>{
         toast.warning('Oh!! no 🙁🙄 you removed from basket')
@@ -13,6 +13,19 @@ function CheckoutProduct({id,image,title,price,rating,hideButton}) {
     const removeFromBasket=()=>{
         dispatch({type:'REMOVE_FROM_BASKET',id})
         notify()
+    }
+    const addItem =()=>{
+        dispatch({
+            type:'ADD_TO_BASKET',
+            item:{
+                id:id,
+                title:title,
+                image:image,
+                price:price,
+                rating:rating,
+                count:count
+            }
+        });
     }
    
     
@@ -34,6 +47,7 @@ function CheckoutProduct({id,image,title,price,rating,hideButton}) {
                 }
                
             </div>
+            
            {!hideButton && <button className="checkoutProduct__buttonResize" onClick={removeFromBasket}>Remove from Basket</button>} 
         </div>
         </div>

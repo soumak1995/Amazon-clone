@@ -5,8 +5,10 @@ import {useStateValue} from './StateProvider.js'
 import CheckoutProduct from './CheckoutProduct.js'
 import './CheckoutProduct.css'
 import {toast} from 'react-toastify'
-
 import 'react-toastify/dist/ReactToastify.css'
+import FlipMove from 'react-flip-move';
+
+
 toast.configure();
 function Checkout() {
     const[loginStatus,setLoginStatus]=useState(true)
@@ -25,6 +27,7 @@ function Checkout() {
             setLoginStatus(false);
         }
    },[user])
+   console.log(basket)
     return (
         <div className='checkout'>
             <div className="checkout__left">
@@ -38,17 +41,24 @@ function Checkout() {
                <h2 className="checkout_title">
               {basket.length <=0? 'Your Shopping Basket is empty':'Your Shopping Basket'}
                </h2>
-                   {basket.map(items=>(
-                    <CheckoutProduct
-                    id={items.id}
-                    title={items.title}
-                    image={items.image}
-                    price={items.price}
-                    rating={items.rating}
-                    />
-                   )
-                        
-                   )}
+              
+               <FlipMove appearAnimation="fade" enterAnimation="fade" leaveAnimation="fade">
+                                {/* List all the checkout products */}
+                                {basket?.map((item, index) => (
+                                    <div key={index}>
+                                        <CheckoutProduct
+                                            id={item.id}
+                                            title={item.title}
+                                            price={item.price}
+                                            rating={item.rating}
+                                            image={item.image}
+                                        />
+                                    </div>
+
+                                ))}
+                            </FlipMove>
+            
+                   
             
             </div>
             </div>

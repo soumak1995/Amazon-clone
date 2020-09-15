@@ -42,3 +42,9 @@
     font-size:17px;
     font-weight: 400
 }
+.checkoutProduct__button{
+    display: flex;
+    margin-top: 5px;
+    justify-content:space-between;
+    width:80px;
+}
